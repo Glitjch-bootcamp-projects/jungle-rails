@@ -73,4 +73,9 @@ main section.products-show {
   }
 }
 
-
+// for cart page
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

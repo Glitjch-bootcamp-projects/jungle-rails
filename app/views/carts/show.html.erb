@@ -2,8 +2,16 @@
 
   <header class="page-header">
     <h1>My Cart</h1>
+
   </header>
 
+
+<% if cart.blank? %>
+  <div class="empty-cart">
+    <h2>Your Cart is Empty</h2>
+    <a href="/">return to shopping</a>
+  </div>
+<% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +56,6 @@
       <% end %>
     </div>
   </div>
+<% end %>
 
 </section>
