@@ -17,6 +17,12 @@
     <% end %>
   </footer>
 
+  <% if product.quantity > 1 %>
+    <aside class="sold-out alert alert-danger" role="alert">
+      <p>SOLD OUT!</p>
+    </aside>
+  <% end %>
+
   <aside class="price">
   <%# removed "humanized_money_with_symbol" from below for consistency %>
     <%= number_to_currency(product.price) %>
