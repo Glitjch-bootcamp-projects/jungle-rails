@@ -3,5 +3,8 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def new
+    @category = Category.new
+  end
 
 end
