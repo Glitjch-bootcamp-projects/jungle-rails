@@ -10,11 +10,10 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
-  resources :about, only: [:index]
-
-  # get '/about', to: 'about#index'
-
   resources :orders, only: [:create, :show]
+  
+  # custom routing
+  get '/about', to: 'pages#about'
 
   namespace :admin do
     root to: 'dashboard#show'
