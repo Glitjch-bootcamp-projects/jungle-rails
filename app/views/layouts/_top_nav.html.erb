@@ -31,8 +31,11 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <li class='navbar-text'>
+            Signed in as
+          </li>
           <li>
-            <%= link_to "Signed in as #{current_user.name}", '/'%>
+            <%= link_to "#{current_user.name}", '/'%>
           </li>
           <li>
             <%= link_to "Logout", "/logout"%>
