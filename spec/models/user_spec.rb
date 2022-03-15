@@ -84,16 +84,34 @@ RSpec.describe User, type: :model do
       
       @user.save
       
-      # puts "----0---"
+      puts "----0---"
+      puts password
+      puts @user.password
       # puts @user.inspect
       # puts @user.authenticate(@user.password)
-      # puts "----0---"      
+      puts "----0---"      
       
       result = User.authenticate_with_credentials("bobross@gmail.com", password)
       # puts "======2===="
       # puts result.inspect
       # puts "======2===="
       expect(result).to eq(@user)
+    end
+    context 'Edge Cases' do
+      it "should validate email even if there are spaces surrounding the characters AND uppercased" do
+        password = BCrypt::Password.create("hello")
+        user = User.create(
+          :first_name => "bob",
+          :last_name => "ross",
+          :email => "bobross@gmail.com",
+          :password => password,
+          :password_confirmation => "hello"
+        )
+      
+        result = User.authenticate_with_credentials("    BOBROSS@gmail.com    ", password)
+
+        expect(result).to eq(user)
+      end
     end
 
   end
