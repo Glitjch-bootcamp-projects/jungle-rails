@@ -18,15 +18,34 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
   scenario "" do
     # ACT
 
-
     visit root_path
-
+    
+    within('nav') do
+      expect(page).to have_content('My Cart (0)')
+    end
+    within('article.product:nth-child(3)') do
+      click_button "Add"
+    end
+    within('nav') do
+      expect(page).to have_content('My Cart (1)')
+    end
+    within('article.product:nth-child(5)') do
+      click_button "Add"
+    end
+    within('nav') do
+      expect(page).to have_content('My Cart (2)')
+      expect(page).not_to have_content('My Cart (3)')
+    end
+    
     # DEBUG
     save_screenshot
+    puts page.html 
 
-    # VERIIFY 
-    # expect(page).to have_css 'article.product', count: 10
   end
 
 
 end
+
+# home_page feature because you need the category and its products on the home page. Your test scenario should visit the home page and click 'Add to Cart' buttons for one of the products.
+
+# To test for the Cart being updated, you should keep it simple and check the text rendered in the top nav (by the _top_nav.html.erb partial) changes from "My Cart (0)" to to "My Cart (1)
