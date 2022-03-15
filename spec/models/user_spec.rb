@@ -67,16 +67,10 @@ RSpec.describe User, type: :model do
           password_confirmation: "hell"
         )
         @user.save
-          
-          puts "_------------"
           expect(@user.valid?).to be false
           expect(@user.errors.full_messages).to include("Password is too short (minimum is 5 characters)")
       end
     end
   end
 
-
-# These are required when creating the model so you should also have an example for this
-# Emails must be unique (not case sensitive; for example, TEST@TEST.com should not be allowed if test@test.COM is in the database)
-# Email, first name, and last name should also be required
 end
