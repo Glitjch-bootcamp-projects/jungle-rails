@@ -72,5 +72,30 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe '.authenticate_with_credentials' do
+    it "should authenticate email and password from login" do
+      password = BCrypt::Password.create("hello")
+      @user = User.new
+        @user.first_name = "bob"
+        @user.last_name = "ross"
+        @user.email = "bobross@gmail.com"
+        @user.password = password
+        @user.password_confirmation = "hello"
+      
+      @user.save
+      
+      # puts "----0---"
+      # puts @user.inspect
+      # puts @user.authenticate(@user.password)
+      # puts "----0---"      
+      
+      result = User.authenticate_with_credentials("bobross@gmail.com", password)
+      # puts "======2===="
+      # puts result.inspect
+      # puts "======2===="
+      expect(result).to eq(@user)
+    end
 
+  end
+  
 end
