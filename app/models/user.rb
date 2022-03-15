@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   def self.authenticate_with_credentials(email, password)
     puts password
     if user = User.find_by_email(email.strip.downcase)&.authenticate(password)
-      puts user.password_digest
+      # puts "-----3-----"
+      # puts user.password_digest
       return user
     else
       return nil
