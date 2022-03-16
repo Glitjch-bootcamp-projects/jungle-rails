@@ -15,7 +15,7 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
     end
   end
 
-  scenario "" do
+  scenario "updates cart counter on navbar" do
     # ACT
 
     visit root_path
