@@ -1,17 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "UserLogins", type: :feature, js: true do
-    #SETUP
-    before :each do
-     @user = User.create!(
-      :first_name => "bob",
-      :last_name => "ross",
-      :email => "bobross@gmail.com",
-      :password => "hello",
-      :password_confirmation => "hello"
-     )
-    end
-
+  #SETUP
+  before :each do
+   @user = User.create!(
+    :first_name => "bob",
+    :last_name => "ross",
+    :email => "bobross@gmail.com",
+    :password => "hello",
+    :password_confirmation => "hello"
+   )
+  end
 
   scenario "user can log in successfully and taken to home page" do
     visit root_path
